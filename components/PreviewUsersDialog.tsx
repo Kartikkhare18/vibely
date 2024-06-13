@@ -61,6 +61,7 @@ const PreviewUsersDialog = ({
     };
     fetchUsers();
   }, []);
+
   return (
     <Dialog open={!!selectedFile}>
       <DialogContent className="sm:max-w-[425px]" onInteractOutside={close}>
@@ -78,7 +79,7 @@ const PreviewUsersDialog = ({
                 onClick={() => selectedUserHandler(user)}
                 key={user._id}
                 className={`flex ${
-                  selectedUser?._id === user._id ? "bg-gray-200" : null
+                  selectedUser?._id === user._id ? "bg-gray-200" : ""
                 } items-center gap-5 cursor-pointer p-2 rounded-md hover:bg-gray-200`}
               >
                 <Avatar>
@@ -123,4 +124,5 @@ const PreviewUsersDialog = ({
     </Dialog>
   );
 };
+
 export default PreviewUsersDialog;
