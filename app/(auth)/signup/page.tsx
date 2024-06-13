@@ -3,13 +3,12 @@ import Signup from "@/components/Signup";
 import React from "react";
 
 const SignupPage = () => {
-  //inline function level
-  const signupHandler = async () => {
+  async function authAction() {
     "use server";
     await signIn("github");
-  };
+  }
   return (
-    <form action={signupHandler}>
+    <form action={authAction}>
       <Signup />
     </form>
   );
