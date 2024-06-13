@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import chatLogo from "@/public/chat-logo_black.png";
+import SnapchatLogo from "@/public/chat-logo_black.png";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -8,7 +8,12 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       <div className="w-screen h-screen flex items-center justify-center">
         <div className="bg-white flex flex-col items-center text-center shadow-lg p-10 rounded-sm">
           <div>
-            <Image src={chatLogo} alt="snapchat-logo" width={40} height={40} />
+            <Image
+              src={SnapchatLogo}
+              alt="snapchat-logo"
+              width={40}
+              height={40}
+            />
           </div>
           {children}
         </div>
