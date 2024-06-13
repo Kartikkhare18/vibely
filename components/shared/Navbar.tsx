@@ -1,6 +1,6 @@
-import React from "react";
-import chatLogo from "@/public/chat-logo_black.png";
 import Image from "next/image";
+import React from "react";
+import SnapchatLogo from "@/public/chat-logo_black.png";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { TbGridDots } from "react-icons/tb";
@@ -13,17 +13,17 @@ const Navbar = async () => {
   return (
     <div className="flex items-center justify-between w-screen px-10 py-4">
       <div className="flex items-center gap-2">
-        <Image src={chatLogo} width={50} height={50} alt="chat-logo" />
+        <Image src={SnapchatLogo} width={50} height={50} alt="snapchat-logo" />
         <Input type="text" placeholder="Search..." className="rounded-full" />
       </div>
-
       <div className="md:block hidden">
         <Button variant="ghost">Stories</Button>
         <Button variant="ghost">Spotlight</Button>
-        <Button variant="ghost">Chat</Button>
+        <Link href={"/chat"}>
+          <Button variant="ghost">Chat</Button>
+        </Link>
         <Button variant="ghost">Lenses</Button>
       </div>
-
       <div className="flex items-center gap-5">
         <Button
           size={"icon"}
@@ -46,4 +46,5 @@ const Navbar = async () => {
     </div>
   );
 };
+
 export default Navbar;
