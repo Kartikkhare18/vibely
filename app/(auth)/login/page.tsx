@@ -13,5 +13,4 @@ const LoginPage = () => {
     </form>
   );
 };
-
 export default LoginPage;
