@@ -1,21 +1,20 @@
 import NextAuth from "next-auth";
-import Github from "next-auth/providers/github";
-import connectDataBase from "./lib/db";
+import connectDB from "./lib/db";
+import github from "next-auth/providers/github";
 import { User } from "./models/user.model";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Github({
+    github({
       clientId: process.env.NEXT_GITHUB_CLIENT_ID,
       clientSecret: process.env.NEXT_GITHUB_CLIENT_SECRET,
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-
   callbacks: {
     async session({ session }: { session: any }) {
       try {
-        await connectDataBase();
+        await connectDB();
         if (session.user) {
           const user = await User.findOne({ email: session.user.email });
           if (user) {
@@ -34,9 +33,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async signIn({ account, profile }) {
       if (account?.provider === "github") {
-        await connectDataBase();
+        await connectDB();
         try {
-          const user = await User.findOne({ email: profile?.email });
+          const user = await User.findOne({ email: profile?.email! });
           if (!user) {
             const newUser = await User.create({
               username: profile?.login,
