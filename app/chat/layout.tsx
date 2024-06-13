@@ -1,4 +1,4 @@
-import ChatSidebar from "@/components/LeftSidebar";
+import ChatSidebar from "@/components/ChatSidebar";
 import React from "react";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -9,4 +9,5 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     </div>
   );
 };
+
 export default Layout;
